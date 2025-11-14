@@ -1,0 +1,15 @@
+{% extends "questions/base.html" %} {% block content %}
+
+<h1>All Questions</h1>
+
+<ol>
+    {% for q in questions %}
+    <li>
+        <a href="{% url 'questions:question' q.id %}">
+            Question {{ q.order|add:1 }}: {{ q.prompt }}
+        </a>
+    </li>
+    {% endfor %}
+</ol>
+
+{% endblock content %}

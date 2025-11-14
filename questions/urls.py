@@ -18,4 +18,8 @@ urlpatterns = [
     path("new_entry/<int:topic_id>/", views.new_entry, name="new_entry"),
     # Question pages
     path("question/<int:question_id>/", views.question, name="question"),
+    # Questions List
+    path("questions/", views.question_list, name="question_list"),
+    # Thank you page
+    path("thank-you/", views.thank_you, name="thank_you"),
 ]

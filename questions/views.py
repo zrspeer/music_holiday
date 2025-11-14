@@ -29,17 +29,35 @@ def topic(request, topic_id):
 def question(request, question_id):
     """Show a question"""
     question = get_object_or_404(Question, id=question_id)
-    answer_text = ""
-    submitted = False
 
     if request.method == "POST":
-        answer_text = request.POST.get("answer", "")
+        next_question = (
+            Question.objects.filter(order__gt=question.order)
+            .order_by("order", "id")
+            .first()
+        )
+
+        if next_question:
+            return redirect("questions:question", question_id=next_question.id)
+        else:
+            return redirect("questions:thank_you")
+
     context = {
         "question": question,
-        "answer": answer_text,
-        "submitted": True,
+        "answer": "",
+        "submitted": False,
     }
     return render(request, "questions/question.html", context)
+
+
+def question_list(request):
+    questions = Question.objects.all()
+    context = {"questions": questions}
+    return render(request, "questions/question_list.html", context)
+
+
+def thank_you(request):
+    return render(request, "questions/thank_you.html")
 
 
 def new_topic(request):

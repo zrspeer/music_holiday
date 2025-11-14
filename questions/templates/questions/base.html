@@ -1,6 +1,18 @@
-<p>
-    <a href="{% url 'questions:index' %}">Home</a> -
-    <a href="{% url 'questions:topics' %}">Topics</a>
-</p>
-
-{% block content %}{% endblock content %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Holiday Playlist</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.simplecss.org/simple.min.css"
+        />
+    </head>
+    <body>
+        <p>
+            <a href="{% url 'questions:index' %}">Home</a> -
+            <a href="{% url 'questions:question_list' %}">Questions</a>
+        </p>
+        {% block content %} {% endblock content %}
+    </body>
+</html>
