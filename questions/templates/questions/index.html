@@ -1,5 +1,21 @@
-{% extends "questions/base.html" %}
-
-{% block content %}
-<p>A survey of music from the year.</p>
+{% extends "questions/base.html" %} {% block content %}
+<p>
+    Are you, too, spiritually exhausted by the cruelly predictable algorithms of
+    the Spotify overlords? Do you miss the giddy anticipation of hitting play on
+    a carefully curated mixtape filled with lyrical innuendo courtesy of your
+    middle-school crush? Do you pine for days of burning CDs and the permanence
+    of handwritten Sharpie titles? If you think that streaming is starting to
+    ruin your relationship with music, let’s rebel and get out of this musical
+    rut together. This holidazzle season Zach and I are sending out a different
+    kind of holiday card: a collaborative mixtape built from songs hand-picked
+    from our friends, loved ones, and at least one random stranger with
+    excellent taste. Lace up your Heely’s and help us say “happy holidays and
+    fuck-you very much” to the robots: Send us your songs and your mailing
+    address. We’ve got a few prompts to get those synapses firing.
+</p>
+<p>
+    <a href="{% url 'questions:question' 1 %}">
+        <button>Start!</button>
+    </a>
+</p>
 {% endblock content %}

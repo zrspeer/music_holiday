@@ -1,0 +1,15 @@
+{% extends 'questions/base.html' %} {% block content %}
+
+<h1>Question: {{ question.order|add:1 }}</h1>
+
+<p>{{ question.prompt }}</p>
+<form method="post">
+    {% csrf_token %}
+    <textarea name="answer" rows="4" cols="50"></textarea>
+    <br />
+    <button type="submit">Submit</button>
+</form>
+
+{% if submitted %}
+<p>You submitted: "{{ answer }}"</p>
+{% endif %} {% endblock content %}
