@@ -26,9 +26,12 @@
     fuck-you very much” to the robots: Send us your songs and your mailing
     address. We’ve got a few prompts to get those synapses firing.
 </p>
+{% if first_question %}
 <p>
-    <a href="{% url 'questions:question' 1 %}">
+    <a href="{% url 'questions:question' first_question.id %}">
         <button>Start!</button>
     </a>
 </p>
-{% endblock content %}
+{% else %}
+<p>No questions have been configured yet.</p>
+{% endif %} {% endblock content %}

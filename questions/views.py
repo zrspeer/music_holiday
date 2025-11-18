@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
+from .forms import AnswerForm
 from .models import Answer, Question, Submission
 
 # Create your views here.
@@ -7,37 +8,73 @@ from .models import Answer, Question, Submission
 
 def index(request):
     """Home page for questions app"""
-    return render(request, "questions/index.html")
+    first_question = Question.objects.order_by("order", "id").first()
+    return render(
+        request,
+        "questions/index.html",
+        {"first_question": first_question},
+    )
 
 
-def question(request, question_id):
-    """Show a question"""
-    question = get_object_or_404(Question, id=question_id)
+def get_or_create_submission(request):
+    submission_id = request.session.get("submission_id")
+    if submission_id:
+        try:
+            return Submission.objects.get(id=submission_id)
+        except Submission.DoesNotExist:
+            pass
 
-    if request.method == "POST":
-        next_question = (
-            Question.objects.filter(order__gt=question.order)
-            .order_by("order", "id")
-            .first()
-        )
-
-        if next_question:
-            return redirect("questions:question", question_id=next_question.id)
-        else:
-            return redirect("questions:thank_you")
-
-    context = {
-        "question": question,
-        "answer": "",
-        "submitted": False,
-    }
-    return render(request, "questions/question.html", context)
+    submission = Submission.objects.create()
+    request.session["submission_id"] = submission.id
+    return submission
 
 
 def question_list(request):
     questions = Question.objects.all()
     context = {"questions": questions}
     return render(request, "questions/question_list.html", context)
+
+
+def question(request, question_id):
+    question = get_object_or_404(Question, id=question_id)
+    submission = get_or_create_submission(request)
+
+    answer_obj, _ = Answer.objects.get_or_create(
+        submission=submission, question=question, defaults={"value_text": ""}
+    )
+
+    submitted = False
+
+    if request.method == "POST":
+        value = request.POST.get("answer", "").strip()
+        answer_obj.value_text = value
+        answer_obj.save()
+        submitted = True
+
+        if question.slug == "name" and not submission.name:
+            submission.name = value
+            submission.save(update_fields=["name"])
+
+        next_question = (
+            Question.objects.filter(order__gt=question.order)
+            .order_by("order", "id")
+            .first()
+        )
+        if next_question:
+            return redirect(
+                "questions:question",
+                question_id=next_question.id,
+            )
+        else:
+            return redirect("questions:thank_you")
+
+    context = {
+        "question": question,
+        "answer": answer_obj.value_text,
+        "submitted": submitted,
+    }
+
+    return render(request, "questions/question.html", context)
 
 
 def thank_you(request):

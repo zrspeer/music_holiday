@@ -19,7 +19,7 @@ class Submission(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        who = self.nickname or "anonymous"
+        who = self.name or "anonymous"
         return f"{who} @ {self.created:%Y-%m-%d %H:%M}"
 
 
