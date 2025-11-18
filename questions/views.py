@@ -1,13 +1,17 @@
+from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import AnswerForm
+from .forms import AnswerForm, PasscodeForm
 from .models import Answer, Question, Submission
 
-# Create your views here.
+SURVEY_PASSCODE = settings.SURVEY_PASSCODE
 
 
 def index(request):
     """Home page for questions app"""
+    if not request.session.get("gate_ok"):
+        return redirect("questions:gate")
+
     first_question = Question.objects.order_by("order", "id").first()
     return render(
         request,
@@ -36,6 +40,9 @@ def question_list(request):
 
 
 def question(request, question_id):
+    if not request.session.get("gate_ok"):
+        return redirect("questions:gate")
+
     question = get_object_or_404(Question, id=question_id)
     submission = get_or_create_submission(request)
 
@@ -81,3 +88,25 @@ def question(request, question_id):
 
 def thank_you(request):
     return render(request, "questions/thank_you.html")
+
+
+def gate(request):
+    if request.session.get("gate_ok"):
+        return redirect("questions:index")
+
+    if request.method == "POST":
+        form = PasscodeForm(request.POST)
+        if form.is_valid():
+            code = form.cleaned_data["code"]
+            if code == SURVEY_PASSCODE:
+                request.session["gate_ok"] = True
+                return redirect("questions:index")
+            else:
+                form.add_error(
+                    "code", "Incorrect code. Ask Zach if you're doing it right."
+                )
+
+    else:
+        form = PasscodeForm()
+
+    return render(request, "questions/gate.html", {"form": form})

@@ -14,4 +14,6 @@ urlpatterns = [
     path("list/", views.question_list, name="question_list"),
     # Thank you page
     path("thank-you/", views.thank_you, name="thank_you"),
+    # gate
+    path("gate/", views.gate, name="gate"),
 ]

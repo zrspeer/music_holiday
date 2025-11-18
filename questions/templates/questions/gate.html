@@ -1,0 +1,15 @@
+{% extends "questions/base.html" %} {% block content %}
+
+<h2>Enter access code</h2>
+
+<p>Please enter the access code we sent you to fill out the playlist survey.</p>
+
+<form method="post">
+    {% csrf_token %} {{ form.code }} {% if form.code.errors %}
+    <p style="color: red">{{ form.code.errors.0 }}</p>
+    {% endif %}
+    <br />
+    <button type="submit">Continue</button>
+</form>
+
+{% endblock content %}
