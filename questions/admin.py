@@ -2,9 +2,6 @@ from django.contrib import admin
 
 from .models import Answer, Question, Submission
 
-# Register your models here.
-#
-
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
@@ -14,8 +11,8 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(Submission)
 class SubmissionAdmin(admin.ModelAdmin):
-    list_display = ("nickname", "created")
-    search_fields = ("nickname",)
+    list_display = ("name", "created")
+    search_fields = ("name",)
 
 
 @admin.register(Answer)

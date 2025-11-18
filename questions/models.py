@@ -15,7 +15,7 @@ class Question(models.Model):
 
 
 class Submission(models.Model):
-    nickname = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=200, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -4,12 +4,12 @@
 
 <h2>{{ question.prompt }}</h2>
 <form method="post">
-    {% csrf_token %}
-    <textarea name="answer" rows="4" cols="50"></textarea>
+    {% csrf_token %} {{ form.value_text }}
+
     <br />
     <button type="submit">Submit</button>
 </form>
 
 {% if submitted %}
-<p>You submitted: "{{ answer }}"</p>
+<p>You submitted: "{{ form.instance.value_text }}"</p>
 {% endif %} {% endblock content %}

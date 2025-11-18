@@ -46,31 +46,33 @@ def question(request, question_id):
     submitted = False
 
     if request.method == "POST":
-        value = request.POST.get("answer", "").strip()
-        answer_obj.value_text = value
-        answer_obj.save()
-        submitted = True
+        form = AnswerForm(request.POST, instance=answer_obj)
+        if form.is_valid():
+            answer = form.save()
+            submitted = True
 
-        if question.slug == "name" and not submission.name:
-            submission.name = value
-            submission.save(update_fields=["name"])
+            if question.slug == "name" and not submission.name:
+                submission.name = (answer.value_text or "").strip()
+                submission.save(update_fields=["name"])
 
-        next_question = (
-            Question.objects.filter(order__gt=question.order)
-            .order_by("order", "id")
-            .first()
-        )
-        if next_question:
-            return redirect(
-                "questions:question",
-                question_id=next_question.id,
+            next_question = (
+                Question.objects.filter(order__gt=question.order)
+                .order_by("order", "id")
+                .first()
             )
-        else:
-            return redirect("questions:thank_you")
+            if next_question:
+                return redirect(
+                    "questions:question",
+                    question_id=next_question.id,
+                )
+            else:
+                return redirect("questions:thank_you")
+    else:
+        form = AnswerForm(instance=answer_obj)
 
     context = {
         "question": question,
-        "answer": answer_obj.value_text,
+        "form": form,
         "submitted": submitted,
     }
 
