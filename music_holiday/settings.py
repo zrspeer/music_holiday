@@ -30,7 +30,7 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 # Gate passcode
 SURVEY_PASSCODE = config("SURVEY_PASSCODE")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config["ALLOWED_HOSTS"].split(",")
 
 
 # Application definition
