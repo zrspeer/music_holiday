@@ -1,12 +1,27 @@
-{% extends "questions/base.html" %} {% block content %}
-<h1>Thank you!</h1>
-<p>
-    Your responses have been submitted! If you would like to change an answer,
-    navigate to the "Questions" link at the top of the page. When you click
-    "Submit" on any question, your answer gets updated and saved!
-</p>
-<p>
-    We appreciate you taking the time to share your answers! You'll get a link
-    to a community playlist in time for the holidays. SUUUUUUH DUDE!
-</p>
+{% extends "questions/base.html" %}
+{% block content %}
+
+<section class="padding">
+
+    <article class="center round" style="max-width: 600px; width: 100%;">
+        <div class="padding">
+            <h3>Thank you!</h3>
+
+            <p class="opacity-7 medium-text">
+                Your responses have been submitted! If you would like to change an answer,
+                navigate to the "Questions" link at the top of the page. When you click
+                "Submit" on any question, your answer gets updated and saved!
+            </p>
+
+            <p class="opacity-7 medium-text">
+                We appreciate you taking the time to share your answers! You'll get a link
+                to a community playlist in time for the holidays. SUUUUUUH DUDE!
+            </p>
+
+        </div>
+
+    </article>
+
+</section>
+
 {% endblock content %}

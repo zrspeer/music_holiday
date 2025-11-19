@@ -1,15 +1,29 @@
-{% extends "questions/base.html" %} {% block content %}
+{% extends "questions/base.html" %}
+{% block content %}
 
-<h1>All Questions</h1>
+<section class="center padding">
+    <article class="center round" style="max-width: 600px; width: 100%;">
+        <div class="padding">
+            <h3>All Questions</h3>
 
-<ol>
-    {% for q in questions %}
-    <li>
-        <a href="{% url 'questions:question' q.id %}">
-            Question {{ q.order|add:1 }}: {{ q.prompt }}
-        </a>
-    </li>
-    {% endfor %}
-</ol>
+            <div class="vertical">
+                {% for q in questions %}
+                <div class="padding">
+                    <a
+                        class="button fill large primary round left"
+                        href="{% url 'questions:question' q.id %}"
+                    >
+                        <span>
+                            <strong>Question {{ q.order|add:1 }}:</strong> {{ q.prompt }}
+                        </span>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </article>
+
+</section>
 
 {% endblock content %}
