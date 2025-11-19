@@ -1,25 +1,81 @@
-{% extends "questions/base.html" %}
-{% block content %}
+{% extends "questions/base.html" %} {% block content %}
 
 <section class="padding">
-
-    <article class="center round" style="max-width: 600px; width: 100%;">
+    <article class="center round" style="max-width: 600px; width: 100%">
         <div class="padding">
             <h3>About us</h3>
 
-            <p class="opacity-7 medium-text">
-                Kendra and Zach...
-            </p>
+            <p class="opacity-7 medium-text">Kendra and Zach...</p>
 
             <h3>About the site</h3>
             <p class="opacity-7 medium-text">
-                Zach made this site...
+                This site began as a simple survey and gradually became a small
+                full-stack experiment. The entire site runs on a Django
+                framework, which stores every answer inside a local database.
+                The site is simple, but complete enough to handle much larger
+                projects. The core logic of the site is written in Python, with
+                templated pages, dynamic question routing, and (fortunately for
+                us) an administrative interface to review submissions.
             </p>
-
+            <p class="opacity-7 medium-text">
+                The Django application itself is deployed on a DigitalOcean
+                Droplet (basically a tiny chunk of rented cloud) running Ubuntu,
+                with Gunicorn serving the Django application and Nginx
+                forwarding requests. When a request arrives (e.g. you click
+                "Next"), Nginx performs the initial HTTP handling and forwards
+                the request through a Unix socket to Gunicorn. Gunicorn then
+                executes the Django logic and returns the rendered HTML/CSS
+                (while Nginx delivers the explosion photo of the mixtape).
+                Styling was handled with Beer CSS, which turned out to be nifty
+                way to quickly get a website looking half-way decent. Certbot
+                provides TLS certificates so that all traffic is encrypted, and
+                we found the domain name for $0.99/year.
+            </p>
+            <p class="opacity-7 medium-text">
+                If you're curious, the majority of this project can be found in
+                this github repo: https://github.com/zrspeer/music_holiday. I'm
+                100% open to feedback and criticism. Here you'll find the
+                website logic and HTML/CSS that you're seeing. All of the
+                request handling setup was handled in the DigitalOcean Droplet
+                through configuration file changes and a lot of pulling my hair
+                out.
+            </p>
+            <p class="opacity-7 medium-text">
+                Most modern websites you come across today follow the same
+                general pattern as this Django project, but many use a
+                JavaScript library such as React. The architecture is similar,
+                with some logic differences in how the pages are rendered. For
+                sites like this (and blogs, forms, forums, dashboards, and
+                content-heavy sites) Django works great. The server can
+                comfortably generate the HTML on-demand, a single language
+                (Python) can handle all the logic, and you can get a website up
+                and running relatively quickly. However, if you need constant
+                client-side updates (live dashboards, animations, drag-and-drop
+                abilities, or fancy fluid interfaces), React is the way to go.
+                It pretty much turns the browser into an application. Don't be
+                surprised if we send you an in-browser video game next year. But
+                we're not there yet.
+            </p>
+            <h3>Your Privacy</h3>
+            <p class="opacity-7 medium-text">
+                Though I built this site myself, I took precautions to protect
+                the information you provide. An initial passcode protects the
+                site from web scrapers and random traffic, a TLS/SSL certificate
+                encrypts everything sent between your browser and the server,
+                and the server (DigitalOcean Droplet) is protected by a
+                firewall. However, we are asking for a name or nickname, mailing
+                address, and very specific music preferences. Individually,
+                these bits of information are "low sensitivity", but together
+                they still form a small personal profile. If there is
+                information you don't feel comfortable providing, please don't
+                provide it! If you submit something and change your mind,
+                contact Kendra or me and I will delete it. I take my online
+                privacy seriously and YOU SHOULD TOO!
+            </p>
+            <p class="opacity-7 medium-text">Love,</p>
+            <p class="opacity-7 medium-text">Zach</p>
         </div>
-
     </article>
-
 </section>
 
 {% endblock content %}
