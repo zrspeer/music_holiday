@@ -89,6 +89,8 @@ def question(request, question_id):
 def thank_you(request):
     return render(request, "questions/thank_you.html")
 
+def info(request):
+    return render(request, "questions/info.html")
 
 def gate(request):
     if request.session.get("gate_ok"):

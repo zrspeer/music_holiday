@@ -1,37 +1,67 @@
-{% extends "questions/base.html" %} {% block content %}
+{% extends "questions/base.html" %}
+{% block content %}
 
-<div
-    class="tenor-gif-embed"
-    data-postid="5441632"
-    data-share-method="host"
-    data-aspect-ratio="1.3871"
-    data-width="100%"
->
-    <a href="https://tenor.com/view/seinfeld-festivus-gif-5441632"
-        >Seinfeld Festivus GIF</a
-    >from <a href="https://tenor.com/search/seinfeld-gifs">Seinfeld GIFs</a>
-</div>
-<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-<p>
-    Are you, too, spiritually exhausted by the cruelly predictable algorithms of
-    the Spotify overlords? Do you miss the giddy anticipation of hitting play on
-    a carefully curated mixtape filled with lyrical innuendo courtesy of your
-    middle-school crush? Do you pine for days of burning CDs and the permanence
-    of handwritten Sharpie titles? If you think that streaming is starting to
-    ruin your relationship with music, let’s rebel and get out of this musical
-    rut together. This holidazzle season Zach and I are sending out a different
-    kind of holiday card: a collaborative mixtape built from songs hand-picked
-    from our friends, loved ones, and at least one random stranger with
-    excellent taste. Lace up your Heely’s and help us say “happy holidays and
-    fuck-you very much” to the robots: Send us your songs and your mailing
-    address. We’ve got a few prompts to get those synapses firing.
-</p>
-{% if first_question %}
-<p>
-    <a href="{% url 'questions:question' first_question.id %}">
-        <button>Start!</button>
-    </a>
-</p>
-{% else %}
-<p>No questions have been configured yet.</p>
-{% endif %} {% endblock content %}
+<section class="padding">
+
+    <article class="center round" style="max-width: 600px; width: 100%;">
+        <div class="padding">
+            <h3>Holiday Mixtape 2025</h3>
+        </div>
+        <div
+            class="tenor-gif-embed"
+            data-postid="5441632"
+            data-share-method="host"
+            data-aspect-ratio="1.3871"
+            data-width="100%"
+        >
+            <a href="https://tenor.com/view/seinfeld-festivus-gif-5441632"
+                >Seinfeld Festivus GIF</a
+            >from <a href="https://tenor.com/search/seinfeld-gifs">Seinfeld GIFs</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+        <p class="opacity-7 medium-text">
+            Are you, too, spiritually exhausted by the cruelly predictable algorithms of
+            the Spotify overlords? Do you miss the giddy anticipation of hitting play on
+            a carefully curated mixtape filled with lyrical innuendo courtesy of your
+            middle-school crush? Do you pine for days of burning CDs and the permanence
+            of handwritten Sharpie titles? If you think that streaming is starting to
+            ruin your relationship with music, let’s rebel and get out of this musical
+            rut together. This holidazzle season Zach and I are sending out a different
+            kind of holiday card: a collaborative mixtape built from songs hand-picked
+            from our friends, loved ones, and at least one random stranger with
+            excellent taste. Lace up your Heely’s and help us say “happy holidays and
+            fuck-you very much” to the robots: Send us your songs and your mailing
+            address. We’ve got a few prompts to get those synapses firing.
+        </p>
+        <h6>How it works:</h6>
+        <p class="opacity-7 medium-text">
+        Click start to start the quiz. When you hit "Next", your answer will be saved.
+        This means that you can answer some questions and come back to the rest later!
+        If you want to change your answer, navigate to the question through the top bar
+        and change it. Your answer will get updated.
+        </p>
+        <h6>Deadline:</h6>
+        <p class="opacity-7 medium-text">
+        Please have your answers submitted by December 1st! Then we'll compile our answers
+        for some community playlists to freshen up the holidays.
+        </p>
+        {% if first_question %}
+        <div class="padding">
+            <a
+                class="button primary large round"
+                href="{% url 'questions:question' first_question.id %}"
+            >
+                <i>arrow_forward</i>
+                <span>Start!</span>
+            </a>
+
+        </div>
+        {% else %}
+        <p>No questions have been configured yet.</p>
+        {% endif %}
+    </article>
+
+</section>
+
+{% endblock content %}

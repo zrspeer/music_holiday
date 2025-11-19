@@ -1,15 +1,40 @@
-{% extends "questions/base.html" %} {% block content %}
+{% extends "questions/base.html" %}
 
-<h2>Enter access code</h2>
+{% block navigation %}
+{% endblock navigation %}
 
-<p>Please enter the access code we sent you to fill out the playlist survey.</p>
+{% block content %}
+<section class="padding">
 
-<form method="post">
-    {% csrf_token %} {{ form.code }} {% if form.code.errors %}
-    <p style="color: red">{{ form.code.errors.0 }}</p>
-    {% endif %}
-    <br />
-    <button type="submit">Continue</button>
-</form>
+    <article class="center round" style="max-width: 600px; width: 100%;"
+
+        <div class="padding">
+            <h3>Enter access code</h3>
+            <p class="opacity-7 medium-text">
+                Please enter the access code we sent you to fill out the playlist survey.
+            </p>
+        </div>
+
+        <form method="post" class="padding">
+            {% csrf_token %}
+
+            <div class="field">
+                {{ form.code }}
+            </div>
+
+            <div class="padding-top">
+                <button class="button primary large round" type="submit">
+                    <i>arrow_forward</i>
+                    <span>Continue</span>
+                </button>
+            </div>
+        </form>
+
+        {% if form.code.errors %}
+        <p style="color: red">{{ form.code.errors.0 }}</p>
+        {% endif %}
+
+</section>
+
 
 {% endblock content %}

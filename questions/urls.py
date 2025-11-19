@@ -16,4 +16,6 @@ urlpatterns = [
     path("thank-you/", views.thank_you, name="thank_you"),
     # gate
     path("gate/", views.gate, name="gate"),
+    # info
+    path("info/", views.info, name="info")
 ]
