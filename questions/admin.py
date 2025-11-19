@@ -17,6 +17,7 @@ class AnswerInline(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ("prompt", "order", "slug")
     search_fields = ("prompt", "slug")
+    fields = ("prompt", "description", "order", "slug")
 
 
 @admin.register(Submission)

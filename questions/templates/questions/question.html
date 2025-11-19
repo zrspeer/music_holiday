@@ -1,15 +1,53 @@
-{% extends 'questions/base.html' %} {% block content %}
+{% extends 'questions/base.html' %}
+{% block content %}
 
-<h3>Question: {{ question.order|add:1 }}</h3>
+<section class="padding">
 
-<h2>{{ question.prompt }}</h2>
-<form method="post">
-    {% csrf_token %} {{ form.value_text }}
+    <article class="center round" style="max-width: 600px; width: 100%;">
 
-    <br />
-    <button type="submit">Submit</button>
-</form>
+        <div class="padding">
+            <h4>Question: {{ question.order|add:1 }}</h4>
+            <h3>
+                {{ question.prompt }}
+            </h3>
 
-{% if submitted %}
-<p>You submitted: "{{ form.instance.value_text }}"</p>
-{% endif %} {% endblock content %}
+            {% if question.description %}
+            <p class="opacity-7 medium-text">
+                {{ question.description }}
+            </p>
+            {% endif %}
+        </div>
+
+        <form method="post" class="padding">
+            {% csrf_token %}
+
+            <div class="field">
+            {{ form.value_text }}
+            </div>
+
+            <div class="padding-top">
+                <button class="button primary large round" type="submit">
+                    <i>arrow_forward</i>
+                    <span>Next</span>
+                </button>
+            </div>
+        </form>
+
+        {% if submitted %}
+        <div class="padding-top padding-left padding-right padding-bottom">
+            <p>
+                You submitted: "{{ form.instance.value_text }}"
+            </p>
+        </div>
+
+        {% endif %}
+
+    </article>
+</section>
+
+
+
+
+
+
+{% endblock content %}

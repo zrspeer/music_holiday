@@ -2,17 +2,32 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Holiday Playlist</title>
         <link
             rel="stylesheet"
-            href="https://cdn.simplecss.org/simple.min.css"
+            href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css"
         />
+        <script
+            type="module"
+            src="https://cdn.jsdilvr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"
+        ></script>
     </head>
     <body>
-        <p>
-            <a href="{% url 'questions:index' %}">Home</a> -
-            <a href="{% url 'questions:question_list' %}">Questions</a>
-        </p>
-        {% block content %} {% endblock content %}
+        <nav class="top">
+            <a href="{% url 'questions:index' %}">
+                <i>home</i>
+                <div>Home</div>
+            </a>
+
+            <a href="{% url 'questions:question_list' %}">
+                <i>quiz</i>
+                <div>Questions</div>
+            </a>
+        </nav>
+
+        <main class="responsive padding">
+            {% block content %} {% endblock content %}
+        </main>
     </body>
 </html>

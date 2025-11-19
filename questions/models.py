@@ -6,6 +6,7 @@ class Question(models.Model):
     required = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0)
     slug = models.SlugField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
 
     class Meta:
         ordering = ("order", "id")
