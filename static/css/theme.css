@@ -1,0 +1,81 @@
+:root {
+    /* Overall background (page) */
+    --background: #1f1f1f; /* almost black, like your photo background */
+    --on-background: #f5f5f5; /* light text where it sits directly on background */
+
+    /* Cards / tiles / surfaces */
+    --surface: #d1d1d1; /* light warm gray/cream for tiles */
+    --on-surface: #111111; /* near-black text on tiles */
+
+    /* Primary (buttons, main accent) */
+    --primary: #f6d75a; /* light yellow button background */
+    --on-primary: #222222; /* dark text on yellow button */
+
+    /* Secondary accent (optional, a warm orange / red) */
+    --secondary: #f08a27; /* orange accent to echo the explosion */
+    --on-secondary: #111111;
+
+    /* Borders and subtle lines */
+    --outline: #3a3a3a;
+
+    /* Error (in case you use it) */
+    --error: #ff4a4a;
+    --on-error: #111111;
+}
+
+/* 2. Apply global background + text */
+body {
+    background-color: var(--background);
+    color: var(--on-background);
+}
+
+nav.top {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--outline);
+}
+
+/* 3. Tiles and cards */
+article.round,
+.card {
+    background-color: var(--surface);
+    color: var(--on-surface);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* 4. Global button style */
+button,
+input[type="submit"],
+a.button {
+    background-color: var(--primary);
+    color: var(--on-primary);
+    border: none;
+    border-radius: 999px;
+    padding: 0.6rem 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+button:hover,
+input[type="submit"]:hover,
+a.button:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+}
+
+button:active,
+input[type="submit"]:active,
+a.button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Override BeerCSS primary button color */
+.button.primary,
+.button.primary.fill,
+button.button.primary,
+button.button.primary.fill {
+    background-color: var(--primary) !important;
+    color: var(--on-primary) !important;
+}

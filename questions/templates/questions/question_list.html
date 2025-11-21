@@ -1,8 +1,7 @@
-{% extends "questions/base.html" %}
-{% block content %}
+{% extends "questions/base.html" %} {% block content %}
 
 <section class="center padding">
-    <article class="center round" style="max-width: 600px; width: 100%;">
+    <article class="center round" style="max-width: 600px; width: 100%">
         <div class="padding">
             <h3>All Questions</h3>
 
@@ -10,7 +9,7 @@
                 {% for q in questions %}
                 <div class="padding">
                     <a
-                        class="button fill large primary round left"
+                        class="button primary round question-row"
                         href="{% url 'questions:question' q.id %}"
                     >
                         <span>
@@ -20,10 +19,8 @@
                 </div>
                 {% endfor %}
             </div>
-
         </div>
     </article>
-
 </section>
 
 {% endblock content %}
