@@ -4,8 +4,8 @@
 <section class="padding">
     <article class="center round" style="max-width: 1000px; width: 100%">
         <div class="padding">
-            <h4>Question: {{ question.order|add:1 }}</h4>
-            <h3>{{ question.prompt }}</h3>
+            <h6>Question: {{ question.order|add:1 }}</h6>
+            <h5>{{ question.prompt }}</h5>
 
             {% if question.description %}
             <p class="opacity-7 medium-text">{{ question.description }}</p>
