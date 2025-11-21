@@ -8,14 +8,16 @@
             <div class="vertical">
                 {% for q in questions %}
                 <div class="padding">
+                    <button class="responsive extra small-elevate">
                     <a
-                        class="button primary round question-row"
+
                         href="{% url 'questions:question' q.id %}"
                     >
                         <span>
                             <strong>Question {{ q.order|add:1 }}:</strong> {{ q.prompt }}
                         </span>
                     </a>
+                    </button>
                 </div>
                 {% endfor %}
             </div>
