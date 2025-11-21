@@ -31,10 +31,10 @@ body {
 
 nav.top {
     background-color: var(--surface);
-    border-bottom: 1px solid var(--outline);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.40),
-                0 0 20px rgba(255, 255, 255, 0.25),
-                0 0 30px rgba(255, 255, 255, 0.18);
+    border-bottom: 0px solid var(--outline);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.40),
+                0 0 12px rgba(255, 255, 255, 0.25),
+                0 0 20px rgba(255, 255, 255, 0.18);
 }
 
 /* 3. Tiles and cards */
@@ -43,9 +43,9 @@ article.round,
     background-color: var(--surface);
     color: var(--on-surface);
     border-radius: 16px;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.40),
-                0 0 20px rgba(255, 255, 255, 0.25),
-                0 0 30px rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.40),
+                0 0 12px rgba(255, 255, 255, 0.25),
+                0 0 20px rgba(255, 255, 255, 0.18);
 }
 
 /* 4. Global button style */
