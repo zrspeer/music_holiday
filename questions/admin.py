@@ -15,9 +15,36 @@ class AnswerInline(admin.TabularInline):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ("prompt", "order", "slug")
+    list_display = ("prompt", "order", "slug", "input_type", "has_choices")
     search_fields = ("prompt", "slug")
-    fields = ("prompt", "description", "order", "slug")
+    list_filter = ("input_type",)
+
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "prompt",
+                    "description",
+                    "required",
+                    "order",
+                    "slug",
+                    "input_type",
+                )
+            },
+        ),
+        (
+            "Radio options",
+            {
+                "fields": ("choices",),
+                "description": "Comma separated, use for radio buttons",
+            },
+        ),
+    )
+
+    def has_choices(self, obj):
+        choices_list = obj.get_choices_list()
+        return bool(choices_list)
 
 
 @admin.register(Submission)

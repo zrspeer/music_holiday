@@ -2,11 +2,39 @@ from django.db import models
 
 
 class Question(models.Model):
+    # Choice between text and radio buttons
+    INPUT_TYPE_CHOICES = [("text", "Text"), ("radio", "Radio")]
+
     prompt = models.CharField(max_length=500)
     required = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0)
     slug = models.SlugField(max_length=100, unique=True)
     description = models.TextField(blank=True)
+
+    input_type = models.CharField(
+        max_length=10,
+        choices=INPUT_TYPE_CHOICES,
+        default="text",
+    )
+
+    choices = models.TextField(
+        blank=True,
+    )
+
+    def get_choices_list(self):
+        # Returns list of choice strings for radio questions
+        if not self.choices:
+            return []
+
+        raw_choices = self.choices.split(",")
+        cleaned = []
+
+        for choice in raw_choices:
+            item = choice.strip()
+            if item:
+                cleaned.append(item)
+
+        return cleaned
 
     class Meta:
         ordering = ("order", "id")

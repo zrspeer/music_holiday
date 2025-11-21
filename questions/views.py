@@ -53,7 +53,12 @@ def question(request, question_id):
     submitted = False
 
     if request.method == "POST":
-        form = AnswerForm(request.POST, instance=answer_obj)
+        form = AnswerForm(
+            data=request.POST,
+            question=question,
+            instance=answer_obj,
+        )
+
         if form.is_valid():
             answer = form.save()
             submitted = True
@@ -75,7 +80,10 @@ def question(request, question_id):
             else:
                 return redirect("questions:thank_you")
     else:
-        form = AnswerForm(instance=answer_obj)
+        form = AnswerForm(
+            question=question,
+            instance=answer_obj,
+        )
 
     context = {
         "question": question,
@@ -89,8 +97,10 @@ def question(request, question_id):
 def thank_you(request):
     return render(request, "questions/thank_you.html")
 
+
 def info(request):
     return render(request, "questions/info.html")
+
 
 def gate(request):
     if request.session.get("gate_ok"):

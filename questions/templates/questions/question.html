@@ -1,4 +1,5 @@
-{% extends 'questions/base.html' %} {% block content %}
+{% extends 'questions/base.html' %}
+{% block content %}
 
 <section class="padding">
     <article class="center round" style="max-width: 600px; width: 100%">
@@ -11,12 +12,30 @@
             {% endif %}
         </div>
 
-        <form method="post" class="padding">
+        <form method="post">
             {% csrf_token %}
 
-            <div class="field">{{ form.value_text }}</div>
+                {% if form.value_text.field.widget.input_type == "radio" %}
+                    <fieldset>
+                        <legend>Select One</legend>
+                        <nav class="vertical">
+                            {% for subwidget in form.value_text %}
+                            <label class="radio">
+                                <input type="radio">
+                                {{ subwidget.tag }}
+                                <span>{{ subwidget.choice_label }}</span>
+                            </label>
+                            {% endfor %}
+                        </nav>
+                    </fieldset>
+                {% else %}
+                    <div class="field">
+                        {{ form.value_text }}
+                    </div>
+                {% endif %}
 
-            <div class="padding-top">
+
+            <div class="padding">
                 <button class="button primary large round" type="submit">
                     <i>arrow_forward</i>
                     <span>Next</span>

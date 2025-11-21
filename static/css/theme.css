@@ -1,6 +1,6 @@
 :root {
     /* Overall background (page) */
-    --background: #1f1f1f; /* almost black, like your photo background */
+    --background: #1f1f1f; /* almost black, like your photo background #1f1f1f*/
     --on-background: #f5f5f5; /* light text where it sits directly on background */
 
     /* Cards / tiles / surfaces */
@@ -32,6 +32,9 @@ body {
 nav.top {
     background-color: var(--surface);
     border-bottom: 1px solid var(--outline);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.40),
+                0 0 20px rgba(255, 255, 255, 0.25),
+                0 0 30px rgba(255, 255, 255, 0.18);
 }
 
 /* 3. Tiles and cards */
@@ -40,7 +43,9 @@ article.round,
     background-color: var(--surface);
     color: var(--on-surface);
     border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.40),
+                0 0 20px rgba(255, 255, 255, 0.25),
+                0 0 30px rgba(255, 255, 255, 0.18);
 }
 
 /* 4. Global button style */
