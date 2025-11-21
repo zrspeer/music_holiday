@@ -8,13 +8,13 @@
             <div class="vertical">
                 {% for q in questions %}
                 <div class="padding left-align">
-                    <button class="responsive extra small-elevate left-align vertical left-round">
+                    <button class="responsive small-elevate vertical no-round">
                     <a
 
                         href="{% url 'questions:question' q.id %}"
                     >
                         <span>
-                            <strong>Question {{ q.order|add:1 }}:</strong> {{ q.prompt }}
+                            Question {{ q.order|add:1 }}: {{ q.prompt }}
                         </span>
                     </a>
                     </button>

@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Holiday Playlist</title>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css"
@@ -15,7 +16,7 @@
             src="https://cdn.jsdilvr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"
         ></script>
     </head>
-    <body>
+    <body class="dark">
         {% block navigation %}
         <nav class="top">
             <a href="{% url 'questions:index' %}">
