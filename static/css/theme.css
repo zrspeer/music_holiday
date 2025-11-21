@@ -23,6 +23,11 @@
     --on-error: #111111;
 }
 
+:root,
+body.dark {
+    --primary:  #f6d75a;
+}
+
 /* 2. Apply global background + text */
 body {
     font-family: "IBM Plex Sans", Helvetica, "San Francisco", Arial, sans-serif;
