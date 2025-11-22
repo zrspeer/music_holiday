@@ -1,62 +1,69 @@
-{% extends "questions/base.html" %}
-{% load static %}
-{% block content %}
+{% extends "questions/base.html" %} {% load static %} {% block content %}
 
 <section class="padding">
-
-    <article class="center round" style="max-width: 1000px; width: 100%;">
-
+    <article class="center round" style="max-width: 1000px; width: 100%">
         <div>
             <img
                 src="{% static 'bangerzonly_2025.png' %}"
                 alt="bangerzonly"
-                style="max-width: 100%; height: auto;"
-            >
+                style="max-width: 100%; height: auto"
+            />
         </div>
 
+        <p class="opacity-7 medium-text">
+            Are you, too, spiritually exhausted by the cruelly predictable
+            algorithms of the Spotify overlords? Do you miss the giddy
+            anticipation of hitting play on a carefully curated mixtape filled
+            with lyrical innuendo courtesy of your middle-school crush? Do you
+            pine for days of burning CDs and the permanence of handwritten
+            Sharpie titles?
+        </p>
+        <p class="opacity-7 medium-text">
+            If you think that streaming is starting to ruin your relationship
+            with music, let’s rebel and get out of this musical rut together.
+        </p>
 
         <p class="opacity-7 medium-text">
-            Are you, too, spiritually exhausted by the cruelly predictable algorithms of
-            the Spotify overlords? Do you miss the giddy anticipation of hitting play on
-            a carefully curated mixtape filled with lyrical innuendo courtesy of your
-            middle-school crush? Do you pine for days of burning CDs and the permanence
-            of handwritten Sharpie titles? If you think that streaming is starting to
-            ruin your relationship with music, let’s rebel and get out of this musical
-            rut together. This holidazzle season Zach and I are sending out a different
-            kind of holiday card: a collaborative mixtape built from songs hand-picked
-            from our friends, loved ones, and at least one random stranger with
-            excellent taste. Lace up your Heely’s and help us say “happy holidays and
-            fuck-you very much” to the robots: Send us your songs and your mailing
-            address. We’ve got a few prompts to get those synapses firing.
+            This festive season Zach and I are sending out a different kind of
+            holiday card: mixtapes (digital playlists) of songs hand-picked by
+            our friends and loved ones.
         </p>
+
         <h6>How it works:</h6>
         <p class="opacity-7 medium-text">
-        Click start to start the quiz. When you hit "Next", your answer will be saved.
-        This means that you can answer some questions and come back to the rest later!
-        If you want to change your answer, navigate to the question through the top bar
-        and change it. Your answer will get updated.
+            We've got some questions. First, we'll get some important
+            information, like your alias and address. Then we'll ask about your
+            listening habits because Zach is a data nerd and wants to create
+            pretty graphs. Finally, the good stuff: A review of this year's
+            bangerz. NO CHRISTMAS SONGS ALLOWED.
         </p>
+        <p class="opacity-7 medium-text">
+            Click "Start!" to start the questions. When you hit "Next" your
+            answer will be saved. This means that you can answer some questions
+            and come back to the rest later! If you want to change your answer,
+            navigate to the question through the top bar and change it. Your
+            answer will get updated.
+        </p>
+        <p class="opacity-7 medium-text"></p>
         <h6>Deadline:</h6>
         <p class="opacity-7 medium-text">
-        Please have your answers submitted by December 1st! Then we'll compile our answers
-        for some community playlists to freshen up the holidays.
+            Please submit your answers by December 1st!
         </p>
+        <h6 class="center">No Christmas Songs!</h6>
         {% if first_question %}
         <div class="padding">
             <a
-                class="button primary large round"
+                class="button center primary large round"
                 href="{% url 'questions:question' first_question.id %}"
             >
                 <i>arrow_forward</i>
                 <span>Start!</span>
             </a>
-
         </div>
         {% else %}
         <p>No questions have been configured yet.</p>
         {% endif %}
     </article>
-
 </section>
 
 {% endblock content %}
