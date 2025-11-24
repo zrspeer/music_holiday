@@ -47,13 +47,14 @@
         <p class="opacity-7 medium-text"></p>
         <h6>Deadline:</h6>
         <p class="opacity-7 medium-text">
-            Please submit your answers by December 1st!
+            Please submit your answers by December 3rd!
         </p>
-        <h6 class="center">No Christmas Songs!</h6>
+
         {% if first_question %}
-        <div class="padding">
+        <div class="padding" style="text-align: center">
+            <h6>No Christmas Songs!</h6>
             <a
-                class="button center primary large round"
+                class="button primary large round"
                 href="{% url 'questions:question' first_question.id %}"
             >
                 <i>arrow_forward</i>
